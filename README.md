@@ -1,0 +1,1 @@
+Repository for a custom Linear Algebra and Matrix Operation Library which uses High Performance computing (OpenMPI, OpenMP, CUDA) for high efficiency.
