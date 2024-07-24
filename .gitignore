@@ -4,3 +4,6 @@ test/
 *.out
 *.a
 *.log
+test.cpp
+test.c
+test.h
