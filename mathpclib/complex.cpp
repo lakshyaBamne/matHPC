@@ -43,7 +43,7 @@ Complex Complex::operator/(const Complex &c){
     Complex cdiv;
 
     try{
-        double denom = pow(c.real_part,2) + pow(c.imaginary_part,2);
+        long double denom = pow(c.real_part,2) + pow(c.imaginary_part,2);
 
         if( denom == 0 ){
             throw denom;
@@ -55,7 +55,7 @@ Complex Complex::operator/(const Complex &c){
 
         return cdiv;
     }
-    catch(double exception){
+    catch(long double exception){
         if(exception == 0){
             cout << "[ERROR] division by zero error while dividing matHPC complex type" << endl;
         }
@@ -64,8 +64,8 @@ Complex Complex::operator/(const Complex &c){
         cout << "[UNKNOWN EXCEPTION] unknown exception occured while division of matHPC complex type" << endl;
     }
 
-    cdiv.real_part = sqrtf(-1);
-    cdiv.imaginary_part = sqrtf(-1);
+    cdiv.real_part = sqrtl(-1);
+    cdiv.imaginary_part = sqrtl(-1);
 
     return cdiv;
 }
@@ -73,6 +73,6 @@ Complex Complex::operator/(const Complex &c){
 // Method to calculate the modulus of the complex number
 // this will always be a positive real number
 Real Complex::mod(){
-    Real modval(sqrt(pow(this->real_part,2)+pow(this->imaginary_part,2)));
+    Real modval(sqrtl(pow(this->real_part,2)+pow(this->imaginary_part,2)));
     return modval;
 }

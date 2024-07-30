@@ -48,7 +48,7 @@ Real Real::operator/(const Real &r){
         cout << "[UNKNOWN EXCEPTION] default exception raised while division of matHPC real type" << endl;
     }
 
-    Real NaN(sqrtf(-1));
+    Real NaN(sqrtl(-1));
     return NaN;
 }
 
@@ -72,3 +72,6 @@ Real::operator double(){
     return this->value;
 }
 
+Real::operator long double(){
+    return (long double)this->value;
+}

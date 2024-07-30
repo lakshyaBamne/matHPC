@@ -8,12 +8,26 @@ using namespace std;
 
 // output stream operator
 ostream & operator<<(ostream &out, const Col &col){
-    out << "ColumnT: ";
-    for(int i=0 ; i<col.array.size()-1 ; i++){
-        out << col.array[i] << ", ";
-    }
-    out << col.array.back() << endl;
+    out << "COL_T: ";
 
+    try{
+        if(col.array.size() == 0){
+            throw 0;
+        }
+        
+        // if the size of the row is not zero output it
+        for(int i=0 ; i<col.array.size()-1 ; i++){
+            out << col.array[i] << ", ";
+        }
+        out << col.array.back() << endl;
+    }
+    catch(int size){
+
+    }
+    catch(...){
+        cout << "[UNKNOWN ERROR] while printing row" << endl;
+    }
+    
     return out;
 }
 
@@ -24,8 +38,15 @@ Real Col::operator[](int i){
     return val;
 }
 
+// Transpose operator
+Row Col::T(){
+    Row row(this->array);
+    return row;
+}
+
+// Col [] Col -> Col element wise operations overloaded
 Col Col::operator+(Col &col){
-    vector<double> vec(this->array.size(), 0);
+    vector<long double> vec(this->array.size(), 0);
 
     try{
         // both column vectors should have the same length
@@ -53,7 +74,7 @@ Col Col::operator+(Col &col){
 }
 
 Col Col::operator-(Col &col){
-    vector<double> vec(this->array.size(), 0);
+    vector<long double> vec(this->array.size(), 0);
 
     try{
         // both column vectors should have the same length
@@ -81,7 +102,7 @@ Col Col::operator-(Col &col){
 }
 
 Col Col::operator*(Col &col){
-    vector<double> vec(this->array.size(), 0);
+    vector<long double> vec(this->array.size(), 0);
 
     try{
         // both column vectors should have the same length
@@ -109,7 +130,7 @@ Col Col::operator*(Col &col){
 }
 
 Col Col::operator/(Col &col){
-    vector<double> vec(this->array.size(), 0);
+    vector<long double> vec(this->array.size(), 0);
 
     try{
         // both column vectors should have the same length
@@ -134,4 +155,13 @@ Col Col::operator/(Col &col){
     Col coldiv(vec);
     return coldiv;
 
+}
+
+// Utility functions for the Column vector
+vector<int> Col::shape(){
+    return {(int)this->array.size(), 1};
+}
+
+void Col::push_back(Real value){
+    this->array.push_back(value);
 }

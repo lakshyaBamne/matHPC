@@ -14,7 +14,7 @@ private:
 
 public:
     // constructor
-    Complex(double realval=0, double imgval=0){
+    Complex(long double realval=0, long double imgval=0){
         this->real_part = realval;
         this->imaginary_part = imgval;
     }
@@ -31,5 +31,6 @@ public:
 
     // method calculates the modulus of the complex number
     Real mod();
+
 };
 

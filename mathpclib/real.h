@@ -7,10 +7,10 @@ using namespace std;
 
 class Real{
 private:
-    double value;
+    long double value;
 public:
     // class constructor - default value is 0
-    Real(double user_value=0){
+    Real(long double user_value=0){
         this->value = user_value;
     }
 
@@ -27,4 +27,6 @@ public:
     // typecast to integer variable with the same amount of memory
     operator uint64_t();
     operator double();
+    operator long double();
+    
 };
